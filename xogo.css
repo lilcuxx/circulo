@@ -1,0 +1,54 @@
+body {
+    margin: 0;
+}
+
+.circulo {
+    background-color: blue;
+    color: white;
+    font-size: 150px;
+    font-family: Verdana, Geneva, Tahoma, sans-serif;
+    text-align: center;
+    /*line-height: 200px;*/
+    width: 200px;
+    height: 200px;
+    border-radius: 50%;
+    position: absolute;
+    transition: 0.5s;
+    animation-name: aparecer;
+    animation-duration: 0.5s;
+    animation-timing-function: ease-in-out;
+}
+
+@keyframes aparecer {
+    from { opacity: 0; }
+    to { opacity: 1; }
+}
+
+.crono {
+    float: right;
+    background-color: grey;
+    border-left: 3px solid black;
+    border-bottom: 3px solid black;
+    color: white;
+    font-size: 50px;
+    padding: 10px;
+    padding-left: 20px;
+    font-family: 'Courier New', Courier, monospace;
+    font-weight: bold;
+    border-bottom-left-radius: 50px;
+    
+}
+
+.inicio{
+    background-color: chartreuse;
+    text-align: center;
+    display: inline-block;
+}
+
+#pantallai{
+    background-color: cadetblue;
+    border: solid black;
+    text-align: center;
+    display: inline-block;
+    
+}
