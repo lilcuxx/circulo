@@ -1,0 +1,93 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Xogo</title>
+    <link rel="stylesheet" href="xogo.css">
+    <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.7.0/css/all.css">
+</head>
+
+<body>
+    <div id="pantallai">
+
+        <div>
+            Bienvenido :)
+        </div>
+        <div class="inicio" onclick="empezar()">
+            COMENZAR!!
+        </div>
+
+    </div>
+    <div id="fin" style="display: none">
+        Acertastes :)
+        <div id="segundos">Tardaste x segundos manco</div>
+        <div class="elboton">Volver a jugar</div>
+    </div>
+
+    <div class="crono">
+        <span id="cronometro">0:00</span>
+        <div><button class="parar" onclick="start()">STOP</button>
+        </div>
+        <i class="fas fa-stopwatch"></i>
+    </div>
+    <script>
+
+        var tempo = 0;
+        var proximo = 1;
+
+        function actualizaCrono() {
+            tempo = tempo + 1
+            var divCrono = document.getElementById("cronometro")
+            var minutos = Math.floor(tempo / 60)
+            var segundos = tempo % 60
+            if (segundos < 10) {
+                segundos = "0" + segundos
+            }
+            divCrono.textContent = minutos + ":" + segundos;
+        }
+
+        function empezar() {
+            var crono = setInterval(actualizaCrono, 1000)
+            for (var numero = 1; numero <= 5; numero = numero + 1) {
+                creaCirculo(numero)
+            }
+            var divpantallai = document.getElementById("pantallai")
+            divpantallai.style.display = "none"
+        }
+
+
+
+        // Crear un circulo
+        function creaCirculo(numCirculo) {
+            var circulo = document.createElement("div")
+            circulo.setAttribute("class", "circulo")
+            var color = "hsl(" + Math.floor(Math.random() * 360) + "," + (Math.floor(Math.random() * 70) + 30) + "%," + (Math.floor(Math.random() * 50) + 25) + "%)"
+            document.body.appendChild(circulo)
+            circulo.style.backgroundColor = color
+            circulo.style.top = Math.floor(Math.random() * 600) + "px"
+            circulo.style.left = Math.floor(Math.random() * 1000) + "px"
+            circulo.textContent = numCirculo
+
+            circulo.onclick = function () {
+                if (numCirculo == proximo) {
+                    circulo.style.top = "-200px"
+                    proximo = proximo + 1
+                    if (numCirculo == 5) {
+                        clearInterval(crono)
+                        var divfin = document.getElementById("fin")
+                        divfin.style.display = "block"
+                    }
+
+                }
+
+            }
+        }
+
+
+    </script>
+</body>
+
+</html>
